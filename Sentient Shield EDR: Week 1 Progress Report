@@ -1,0 +1,68 @@
+Sentient Shield EDR: Week 1 Progress Report
+
+🛡️ Project Overview
+Sentient Shield is an enterprise-grade Endpoint Detection and Response (EDR) grid designed to protect the Infotact Solutions infrastructure. This project leverages Wazuh to provide real-time visibility, log analysis, and automated response across multiple operating systems.
+
+👥 Team Roles & Responsibilities
+Sumit Sharma (Infrastructure Lead): Responsible for the core SOC deployment, Docker orchestration, and centralized manager configuration.
+
+Chinmai Raj (Linux Analyst): Focuses on Linux endpoint monitoring, hardening, and Debian-based agent integration.
+
+Dhanajaya Singh (Windows Engineer): Manages Windows agent deployment, Sysmon integration, and Microsoft environment telemetry.
+
+🛠️ Week 1: Infrastructure Milestones
+During this initial phase, the team successfully established the "brain" of our security operations.
+
+1. SOC Manager Deployment
+Platform: Deployed Wazuh (v4.7.2) using Docker on a Kali Linux host.
+
+Service Conflict Resolution: Successfully identified and resolved a port conflict where the local Apache service was blocking the Wazuh Dashboard on port 443.
+
+Security Configuration: Hardened the dashboard access with custom credentials and successfully verified the Indexer, Manager, and Dashboard health.
+
+2. First Agent Enrollment (The Lead Node)
+Host: Kali Linux (IP: 192.168.204.129).
+
+Status: Active.
+
+Telemetry: The agent is now actively forwarding security telemetry, including logs and system inventory, to the central manager.
+
+3. Repository Integrity
+GitHub Sync: Resolved folder structure issues and subproject commit errors to ensure all configuration files are accessible for review.
+
+Configuration: All YAML and environment files for the single-node deployment are securely documented within the repository.
+
+📈 Dashboard Status
+As of the end of Week 1:
+
+Total Agents: 1 (Lead-kali-EDR).
+
+Active Agents: 1.
+
+Monitoring Capabilities: Real-time log analysis and file integrity monitoring (FIM) are operational on the lead node.
+
+Manager is live and accessible.
+
+At least one agent is Green/Active.
+
+GitHub repository is synced and contains all configuration files.
+
+🛡️ What We Accomplished in Week 1
+1. SOC Infrastructure Orchestration
+We successfully deployed the Wazuh Manager, Indexer, and Dashboard using a containerized Docker architecture. This provides an isolated "Command Center" for the Sentient Shield that can handle telemetry from hundreds of machines.
+
+2. Technical Troubleshooting (The Apache Fix)
+We faced a real-world infrastructure hurdle where the local Apache service was blocking port 443. You successfully identified this conflict, stopped the conflicting service, and reconfigured the network to allow the Wazuh Dashboard to go live.
+
+3. Establishing the Communication Grid
+We configured the environment so the Manager listens at your primary static IP: 192.168.204.129. This IP is now the central "Beacon" for all future agents in the Infotact Solutions network.
+
+4. Moving to "Active" Status (The First Eye)
+By enrolling your Kali machine, you moved the "Total Agents" count from 0 to 1.
+
+What it is doing now: Your agent is currently performing Log Data Analysis, File Integrity Monitoring (FIM), and Vulnerability Scans on your local machine.
+
+Why it matters: Your system is no longer just a "view"; it is now actively collecting security telemetry.
+
+5. GitHub Repository Integrity
+We fixed the "404 Error" and "Subproject Commit" issues. By converting wazuh-docker from a submodule to a normal directory, your code is now fully transparent and professional for project review.
