@@ -8,7 +8,7 @@ Sumit Sharma (Infrastructure Lead): Responsible for the core SOC deployment, Doc
 
 Chinmai Raj (Linux Analyst): Focuses on Linux endpoint monitoring, hardening, and Debian-based agent integration.
 
-Dhanajaya Singh (Windows Engineer): Manages Windows agent deployment, Sysmon integration, and Microsoft environment telemetry.
+Dhananjaysinh (Windows Engineer): Manages Windows agent deployment, Sysmon integration, and Microsoft environment telemetry.
 
 🛠️ Week 1: Infrastructure Milestones
 During this initial phase, the team successfully established the "brain" of our security operations.
