@@ -4,7 +4,7 @@
 ## Team Composition
 * **Team Lead (Infrastructure):** Sumit Sharma
 * **Linux Security Analyst:** Chinmai Raj
-* **Windows Security Engineer:** Dhanajaya Singh
+* **Windows Security Engineer:** Dhananjaysinh
 
 ## Project Overview
 Sentient Shield is a centralized, real-time EDR grid designed to detect file changes (FIM), monitor critical system configurations, and execute automated active response actions[cite: 59, 62].
