@@ -1,68 +1,50 @@
 Sentient Shield EDR: Week 1 Progress Report
-
-🛡️ Project Overview
-Sentient Shield is an enterprise-grade Endpoint Detection and Response (EDR) grid designed to protect the Infotact Solutions infrastructure. This project leverages Wazuh to provide real-time visibility, log analysis, and automated response across multiple operating systems.
+🛡️ Project Overview Sentient Shield is an enterprise-grade Endpoint Detection and Response (EDR) grid designed to protect the Infotact Solutions infrastructure. This project leverages Wazuh to provide real-time visibility, log analysis, and automated response across multiple operating systems.
 
 👥 Team Roles & Responsibilities
-Sumit Sharma (Infrastructure Lead): Responsible for the core SOC deployment, Docker orchestration, and centralized manager configuration.
 
-Chinmai Raj (Linux Analyst): Focuses on Linux endpoint monitoring, hardening, and Debian-based agent integration.
+Sumit Sharma (Infrastructure Lead): Core SOC deployment, Docker orchestration, and centralized manager configuration.
 
-Dhananjaysinh (Windows Engineer): Manages Windows agent deployment, Sysmon integration, and Microsoft environment telemetry.
+Chinmai Raj (Linux Analyst): Linux endpoint monitoring, hardening, and Debian-based agent integration.
+
+Dhananjaysinh (Windows Engineer): Windows agent deployment, Sysmon v15.15 integration, and Microsoft environment telemetry.
 
 🛠️ Week 1: Infrastructure Milestones
-During this initial phase, the team successfully established the "brain" of our security operations.
 
 1. SOC Manager Deployment
-Platform: Deployed Wazuh (v4.7.2) using Docker on a Kali Linux host.
 
-Service Conflict Resolution: Successfully identified and resolved a port conflict where the local Apache service was blocking the Wazuh Dashboard on port 443.
+Platform: Deployed Wazuh using Docker on a Kali Linux host (192.168.204.129).
 
-Security Configuration: Hardened the dashboard access with custom credentials and successfully verified the Indexer, Manager, and Dashboard health.
+Conflict Resolution: Resolved port 443 conflicts with the local Apache service to bring the Dashboard online.
 
-2. First Agent Enrollment (The Lead Node)
-Host: Kali Linux (IP: 192.168.204.129).
+2. Multi-OS Agent Enrollment
 
-Status: Active.
+Linux Node: Enrolled Lead-kali-EDR. Status: Active.
 
-Telemetry: The agent is now actively forwarding security telemetry, including logs and system inventory, to the central manager.
+Windows Node: Enrolled Analyst-Win-EDR (Windows 11). Status: Active.
 
-3. Repository Integrity
-GitHub Sync: Resolved folder structure issues and subproject commit errors to ensure all configuration files are accessible for review.
+Telemetry Grid: Established a secure heartbeat connection over port 1514 (TCP).
 
-Configuration: All YAML and environment files for the single-node deployment are securely documented within the repository.
+3. Deep Visibility Integration (EDR Upgrade)
+
+Sysmon Implementation: Deployed Microsoft Sysmon on the Windows endpoint to capture advanced telemetry.
+
+Log Routing: Manually reconfigured ossec.conf to ingest the Microsoft-Windows-Sysmon/Operational event channel, enabling tracking of process creation and network connections.
 
 📈 Dashboard Status
-As of the end of Week 1:
 
-Total Agents: 1 (Lead-kali-EDR).
+Total Agents: 2
 
-Active Agents: 1.
+Active Agents: 2 (Lead-kali-EDR & Analyst-Win-EDR)
 
-Monitoring Capabilities: Real-time log analysis and file integrity monitoring (FIM) are operational on the lead node.
-
-Manager is live and accessible.
-
-At least one agent is Green/Active.
-
-GitHub repository is synced and contains all configuration files.
+Monitoring Capabilities: Real-time log analysis, File Integrity Monitoring (FIM), and Advanced Process Tracking (Sysmon) are now operational.
 
 🛡️ What We Accomplished in Week 1
-1. SOC Infrastructure Orchestration
-We successfully deployed the Wazuh Manager, Indexer, and Dashboard using a containerized Docker architecture. This provides an isolated "Command Center" for the Sentient Shield that can handle telemetry from hundreds of machines.
 
-2. Technical Troubleshooting (The Apache Fix)
-We faced a real-world infrastructure hurdle where the local Apache service was blocking port 443. You successfully identified this conflict, stopped the conflicting service, and reconfigured the network to allow the Wazuh Dashboard to go live.
+1. Cross-Platform Orchestration We successfully moved from a single-node manager to a multi-OS monitoring grid. The Sentient Shield can now ingest and correlate logs from both Linux and Windows environments simultaneously.
 
-3. Establishing the Communication Grid
-We configured the environment so the Manager listens at your primary static IP: 192.168.204.129. This IP is now the central "Beacon" for all future agents in the Infotact Solutions network.
+2. Achieving "Deep Visibility" By integrating Sysmon, we upgraded our Windows monitoring from basic event logging to full EDR capability. We can now see exactly what commands are run, who ran them, and what network ports they opened.
 
-4. Moving to "Active" Status (The First Eye)
-By enrolling your Kali machine, you moved the "Total Agents" count from 0 to 1.
+3. Establishing the Communication Beacon The Manager at 192.168.204.129 is successfully receiving heartbeats every 10 seconds from all endpoints, ensuring near-instantaneous detection of agent downtime or attacks.
 
-What it is doing now: Your agent is currently performing Log Data Analysis, File Integrity Monitoring (FIM), and Vulnerability Scans on your local machine.
-
-Why it matters: Your system is no longer just a "view"; it is now actively collecting security telemetry.
-
-5. GitHub Repository Integrity
-We fixed the "404 Error" and "Subproject Commit" issues. By converting wazuh-docker from a submodule to a normal directory, your code is now fully transparent and professional for project review.
+4. Repository & Configuration Integrity Configuration files for both Linux and Windows agents, including the custom Sysmon log-channel edits, have been synced to the GitHub repository.
