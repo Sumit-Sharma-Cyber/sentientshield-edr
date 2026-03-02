@@ -1,0 +1,17 @@
+Week 2 Project Report: Advanced EDR Configuration and Endpoint Detection
+
+Project Team: Sumit sharma(Team Leader), ChinamiRaj, Dhananjay sinha
+
+Subject: Week 2 Milestone Completion - SentientShield EDR Deployment
+
+Executive Summary
+Following the successful infrastructure deployment in Week 1, our team has completed the advanced configuration phase for the Wazuh EDR ecosystem. Week 2 focused on transforming the environment from a passive log collector into an active threat detection platform. We successfully implemented real-time File Integrity Monitoring (FIM), synchronized global vulnerability databases, and enhanced Windows endpoint telemetry to provide deep visibility into system processes and user behavior.
+
+Team Roles and Responsibilities
+The project was executed through a collaborative effort with clearly defined roles to ensure full coverage of the EDR stack. [Your Name] served as the Lead Security Engineer, overseeing the Dockerized Wazuh Manager deployment, Kali Linux agent configurations, and the global FIM policy architecture. [Teammate 1 Name] acted as the Windows Hardening Specialist, focusing on the integration of Sysmon telemetry, the refinement of the Windows ossec.conf file, and the application of granular Audit Policies. [Teammate 2 Name] served as the SOC Analyst, responsible for the synchronization of CVE feeds, performing vulnerability research, and executing the "Gate Check" simulations to validate real-time alerting.
+
+Technical Implementation and Methodology
+Our primary technical objective was the implementation of a high-sensitivity File Integrity Monitoring (FIM) policy. We achieved this by modifying the Windows agent configuration to monitor the C:\Users\Public\SensitiveData directory using the realtime and report_changes attributes. This allows the Wazuh Manager to not only alert on file modifications but also store a cryptographic "diff" to show exactly what data was altered. Simultaneously, we enabled the Vulnerability Detector module on the Manager, which was configured to pull daily security updates from the National Vulnerability Database (NVD) and Microsoft Security Response Center (MSRC). This allows us to automatically map installed packages on our endpoints to known security risks. To tie these events together, we utilized the auditpol utility via PowerShell to enable logon and logoff auditing, ensuring that every file change or process execution is correlated with a specific user identity.
+
+Validation and Results
+To verify the integrity of our deployment, the team performed a "Gate Check" validation. This involved simulating an unauthorized file modification within the monitored sensitive directory. Upon executing a PowerShell command to create a test file, the Wazuh Manager successfully generated a high-severity alert (Rule 554) within three seconds, meeting the lab's performance requirements. Furthermore, the Vulnerability Dashboard correctly populated a comprehensive inventory of the Windows endpoint, identifying outdated software and missing security patches. With both the Kali Linux and Windows agents maintaining active heartbeats and providing rich telemetry, the team has successfully met all Week 2 objectives and is prepared to move into Week 3, which will focus on automated active responses and custom ruleset development.
