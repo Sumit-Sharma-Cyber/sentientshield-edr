@@ -14,3 +14,10 @@ Sentient Shield is a centralized, real-time EDR grid designed to detect file cha
 - [ ] Enroll Linux/Windows Agents
 - [ ] Install Sysmon for Windows deep visibility
 - [ ] Verify Agent Heartbeats
+
+## Week 2 Status: Configuration & Advanced Detection      
+- [ ] File Integrity Monitoring (FIM)
+- [ ] Vulnerability Detection
+- [ ] Custom Log Analysis
+- [ ] System Inventory
+- [ ] Gate Check
