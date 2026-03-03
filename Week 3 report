@@ -1,0 +1,14 @@
+Week 3: Implementation of Active Response IPS
+
+Project Team: Sumit sharma(Team Leader), ChinamiRaj, Dhananjaysinh
+
+Implementation Overview
+During the third week of the SentientShield EDR project, I transitioned the security environment from passive monitoring to a proactive Intrusion Prevention System (IPS). This was achieved by configuring the Wazuh Manager (v4.7.2) to execute automated defensive actions via the Active Response module. Specifically, I linked the built-in firewall-drop executable to high-severity security events, including Rule 5710 (Attempt to login using a non-existent user) and Rule 5712 (SSHD brute force). The configuration was designed to protect the Lead-kali-EDR agent (192.168.204.129) by dynamically updating its local firewall to block malicious IP addresses for a designated timeout period.
+
+Attack Simulation and Validation
+To validate the system's effectiveness, I conducted a live attack simulation from a Kali Linux terminal targeting the agent over port 22. After executing multiple unauthorized SSH login attempts (ssh hacker@192.168.204.129), the Wazuh Manager detected the pattern and successfully pushed a block command to the agent. The success of the response was confirmed when the attacker's terminal immediately returned a "Connection refused" error, proving that the agent's iptables had successfully null-routed the threat. Further testing was performed using curl to simulate malformed web requests and sudo touch commands to test FIM (File Integrity Monitoring) and Rootcheck (Rule 510) triggers, demonstrating the EDR's ability to defend against multiple attack vectors simultaneously.
+
+Final Security Posture
+The results from the Wazuh Dashboard show that the Lead-kali-EDR agent is fully integrated and communicating with the manager. While standard system events like "Agent started" and "Suspicious Windows cmd shell execution" (Rule 92032) were captured in the logs, the automated blocking of the SSH brute-force attack represents the most significant milestone of this phase. This implementation successfully demonstrates a full Incident Response Lifecycle, where detection, analysis, and remediation occur autonomously in milliseconds, effectively hardening the system against persistent unauthorized access attempts.
+
+
