@@ -21,3 +21,7 @@ Sentient Shield is a centralized, real-time EDR grid designed to detect file cha
 - [ ] Custom Log Analysis
 - [ ] System Inventory
 - [ ] Gate Check
+ ## Week 3 Status: Active Response & IPS Implementation
+- [ ] Configure Active Response:
+- [ ] Live Attack Simulation
+- [ ] Automated Mitigation
