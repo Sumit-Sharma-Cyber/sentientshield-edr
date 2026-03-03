@@ -25,3 +25,8 @@ Sentient Shield is a centralized, real-time EDR grid designed to detect file cha
 - [ ] Configure Active Response:
 - [ ] Live Attack Simulation
 - [ ] Automated Mitigation
+ ## Week 4 Status: Threat Simulation & Kill Chain Mapping      
+- [ ] Framework Deployment
+- [ ] Ransomware Pattern Simulation
+- [ ] MITRE ATT&CK Integration
+- [ ] Kill Chain Visualization
