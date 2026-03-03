@@ -1,0 +1,52 @@
+Project Brief: SentientShield EDR Implementation
+Duration: 4 Weeks (Intensive Phase)
+Core Technologies: Wazuh (Manager & Indexer), Sysmon, Atomic Red Team, Docker, Kali Linux.
+
+Week 1: Infrastructure & Agent Deployment
+The foundation of the EDR was established using a containerized architecture to ensure scalability and isolation.
+
+Wazuh Manager Deployment: Set up a Dockerized Wazuh central manager and indexer to handle log ingestion and alerting.
+
+Multi-OS Enrollment: Successfully enrolled both Linux (Kali) and Windows agents into the environment.
+
+Deep Visibility: Integrated Microsoft Sysmon on Windows endpoints to capture granular process-level telemetry that standard OS logs miss.
+
+Heartbeat Verification: Validated the secure communication channel (AES encryption) between agents and the manager.
+
+Week 2: Configuration & Advanced Detection
+Shifted focus from connectivity to data quality and visibility depth.
+
+File Integrity Monitoring (FIM): Configured real-time monitoring for sensitive system directories (/etc, /bin, C:\Windows\System32) to detect unauthorized changes.
+
+Vulnerability Detection: Enabled the Wazuh Vulnerability Detector to cross-reference installed software versions against the CVE database.
+
+System Inventory: Automated the collection of hardware specs, installed packages, and open ports for comprehensive asset management.
+
+Week 3: Active Response & IPS Implementation
+Transformed the system from a passive observer to an Active Response defender.
+
+IPS Integration: Configured an automated firewall-drop response. When the manager detected an SSH brute-force attack (Rule 5712), it dynamically updated the agent's firewall to block the attacker.
+
+Attack Validation: Manually simulated SSH attacks from a separate Kali instance and verified the "Connection Refused" status, proving the EDR’s autonomous remediation capabilities.
+
+Web & Rootkit Defense: Tested triggers for SQL Injection attempts and hidden system files (Rule 510).
+
+Week 4: Threat Simulation & Kill Chain Mapping
+Finalized the project by validating the EDR against professional-grade adversary techniques.
+
+Adversary Emulation: Deployed the Atomic Red Team (ART) framework on the Lead-kali-EDR agent.
+
+Ransomware Simulation: Executed MITRE Technique T1070.002 (Indicator Removal) to simulate the log-clearing behavior typical of ransomware variants.
+
+MITRE ATT&CK Mapping: Successfully mapped raw alerts to the MITRE ATT&CK Heatmap.
+
+Kill Chain Visualization: Presented a full "Kill Chain" in the dashboard, showing the progression from Initial Access (Execution) to the Impact (Log Destruction).
+
+Final Security Posture Summary
+The SentientShield EDR is now a fully realized security operations center (SOC) in a box. It successfully demonstrates the three pillars of modern cybersecurity:
+
+Visibility: Knowing exactly what is happening on every endpoint.
+
+Detection: Identifying malicious patterns using a mix of signatures and behavioral analysis.
+
+Remediation: Automatically stopping threats before they can cause permanent damage.
