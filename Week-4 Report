@@ -1,0 +1,13 @@
+Week 4 Lab Report: Threat Simulation & Kill Chain Mapping
+
+Project Team: Sumit sharma(Team Leader), ChinamiRaj, Dhananjaysinh
+
+Implementation & Simulation Summary
+In the final phase of the SentientShield EDR project, the focus shifted to Adversary Emulation to validate the platform's detection capabilities against professional attack patterns. Using the Atomic Red Team framework, I simulated a critical stage of the ransomware lifecycle: inhibiting system recovery and forensic investigation. Specifically, I executed a test for MITRE Technique T1070.002 which utilized the rm -rf command to clear Linux system logs. This behavior mimics how adversaries attempt to evade detection and prevent administrators from reconstructing the timeline of a compromise.
+
+Analysis of Results
+As seen in the technical logs, the simulation was completed with an "Exit code: 0," indicating successful execution of the malicious command. The Wazuh Dashboard (week-4 T1070.png) immediately captured the activity, registering over 260 hits within the timeframe of the attack. Crucially, the platform mapped these events to T1059.003 (Command and Scripting Interpreter: Windows Command Shell) and T1087 (Account Discovery), showing a multi-stage detection of the underlying PowerShell activity and the subsequent commands.
+
+Final Gate Check: Kill Chain Presentation
+The SentientShield EDR successfully visualized the "Kill Chain" in the MITRE ATT&CK Events tab. The sequence of detection began with the invocation of the anomalous shell process and ended with the specific system log modification. This proves that the EDR is not just relying on static signatures, but is performing deep Behavioral Analysis that identifies the tactical intent of an attacker. This successful simulation confirms that the infrastructure is prepared to detect and visualize sophisticated, real-world adversary techniques.
+
