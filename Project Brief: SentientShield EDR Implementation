@@ -1,5 +1,5 @@
 Project Brief: SentientShield EDR Implementation
-Duration: 4 Weeks (Intensive Phase)
+Duration: 1 week to  4 Week (Intensive Phase)
 Core Technologies: Wazuh (Manager & Indexer), Sysmon, Atomic Red Team, Docker, Kali Linux.
 
 Week 1: Infrastructure & Agent Deployment
